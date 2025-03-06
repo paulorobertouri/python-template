@@ -1,0 +1,43 @@
+name: Run tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Unit tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install -r requirements.txt
+          python -m pip install -r requirements_dev.txt
+
+      - name: Run pytest with debug output
+        run: |
+          echo "Running pytest with debug output..."
+          python -m pytest --md-report --md-report-flavor gfm --md-report-output md_report.md --cov --cov-report=html --cov-report=term --cov-report=term-missing
+
+      - name: Update summary
+        if: always()
+        run: |
+          echo "## Test Report" >> $GITHUB_STEP_SUMMARY
+          cat md_report.md >> $GITHUB_STEP_SUMMARY
