@@ -2,51 +2,22 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug",
+      "name": "Python: Debug App",
       "type": "debugpy",
       "request": "launch",
-      "program": "main.py",
+      "python": "${command:python.interpreterPath}",
+      "program": "${workspaceFolder}/main.py",
+      "envFile": "${workspaceFolder}/.env",
       "console": "integratedTerminal"
     },
     {
-      "name": "Debug (Docker)",
-      "type": "docker",
-      "request": "launch",
-      "preLaunchTask": "docker-build-run",
-      "python": {
-        "pathMappings": [
-          {
-            "localRoot": "${workspaceFolder}",
-            "remoteRoot": "/app"
-          }
-        ],
-        "projectType": "general",
-        "envFile": "${workspaceFolder}/.env",
-        "jinja": true
-      }
-    },
-    {
-      "name": "Test",
+      "name": "Python: Debug Tests",
       "type": "debugpy",
       "request": "launch",
-      "module": "pytest"
-    },
-    {
-      "name": "Test (Docker)",
-      "type": "docker",
-      "request": "launch",
-      "preLaunchTask": "docker-test-run",
-      "python": {
-        "pathMappings": [
-          {
-            "localRoot": "${workspaceFolder}",
-            "remoteRoot": "/app"
-          }
-        ],
-        "projectType": "general",
-        "envFile": "${workspaceFolder}/.env",
-        "jinja": true
-      }
+      "python": "${command:python.interpreterPath}",
+      "module": "pytest",
+      "args": ["tests", "-q"],
+      "console": "integratedTerminal"
     }
   ]
 }
