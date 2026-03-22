@@ -91,7 +91,7 @@ This project is divided into several sections, each focusing on different aspect
 
 This section contains examples of unit tests written using the `unittest` framework. The tests cover various scenarios and functionalities of the `demo_data.py` module, which provides functions for generating and processing demo data.
 
-### Section 2: `test_demo_data_mock.py`, `test_demo_data_mock_func.py`, `test_demo_data_mock_with.py` and
+### Section 2: `test_demo_data_mock.py`, `test_demo_data_mock_func.py`, `test_demo_data_mock_with.py`
 
 This section demonstrates how to mock functions and methods using the `unittest.mock` module. By mocking functions and methods, you can simulate their behavior and return values, allowing you to test different scenarios and edge cases effectively.
 

@@ -105,7 +105,6 @@ env.bak/
 .cache/
 
 # IDE
-.vscode/
 .idea/
 *.swp
 *.swo
