@@ -1,3 +1,27 @@
+[project]
+name = "python-template"
+version = "1.0.0"
+description = "Python project template with unittest and pytest examples"
+requires-python = ">=3.13"
+dependencies = [
+    "pydantic",
+    "requests",
+    "types-requests"
+]
+
+[dependency-groups]
+dev = [
+    "flake8",
+    "mypy",
+    "pre-commit",
+    "pyright",
+    "pytest",
+    "pytest-cov",
+    "pytest-md-report",
+    "pytest-mock",
+    "ruff"
+]
+
 [tool.pytest.ini_options]
 filterwarnings = [
     "error",

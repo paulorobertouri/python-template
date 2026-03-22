@@ -1,11 +1,12 @@
 SHELL := /bin/bash
 
-PYTHON_VERSION := python3
-
-VENV_DIR := .venv
+.PHONY: install install-dev test run docker-build docker-test
 
 install:
 	./scripts/ubuntu/install.sh
+
+install-dev:
+	./scripts/ubuntu/install-dev.sh
 
 test:
 	./scripts/ubuntu/test.sh
@@ -13,17 +14,9 @@ test:
 run:
 	./scripts/ubuntu/run.sh
 
-cleanup:
-	./scripts/ubuntu/cleanup.sh
+docker-build:
+	docker build -f docker/build.Dockerfile -t python-template-build .
 
-uninstall:
-	./scripts/ubuntu/uninstall.sh
-
-check:
-	./scripts/ubuntu/check.sh
-
-upgrade:
-	./scripts/ubuntu/upgrade.sh
-
-pre-commit-install:
-	./scripts/ubuntu/install-pre-commit.sh
+docker-test:
+	docker build -f docker/test.Dockerfile -t python-template-test .
+	docker run --rm python-template-test

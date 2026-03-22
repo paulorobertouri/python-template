@@ -17,14 +17,13 @@ To run the tests using the command-line interface (CLI), follow these steps:
 2. Install the required dependencies by running the following command:
 
 ```bash
-pip install -r requirements.txt
-pip install -r requirements_dev.txt
+uv sync
 ```
 
 3. Run the tests using the `pytest` command:
 
 ```bash
-python -m pytest
+uv run pytest
 ```
 
 ### Running Tests with IDE (VS Code):
@@ -76,7 +75,7 @@ Or using scripts (Windows):
 Or manually:
 
 ```bash
-python -m pytest --cov --cov-report=html --cov-report=term --cov-report=term-missing
+uv run pytest --cov --cov-report=html --cov-report=term --cov-report=term-missing
 ```
 
 This command will run the tests and generate a coverage report in both HTML and terminal formats. You can view the coverage report by opening the `htmlcov/index.html` file in your web browser or checking the terminal output for detailed coverage information.
@@ -118,25 +117,14 @@ When writing a code with Python, it is possible to use the `flake8`, `mypy`, `py
 To run these tools, you can use the following commands:
 
 ```bash
-make check
-```
-
-Or using scripts (Ubuntu):
-
-```bash
-./scripts/ubuntu/check.sh
-```
-
-Or using scripts (Windows):
-
-```bash
-./scripts/windows/check.ps1
+uv sync
+uv run pre-commit run --all-files
 ```
 
 Or manually:
 
 ```bash
-pre-commit run --all-files
+uv run pre-commit run --all-files
 ```
 
 By running these tools, you can ensure that your code adheres to best practices, follows coding standards, and maintains a high level of quality and consistency. This helps improve the readability, maintainability, and reliability of your codebase, making it easier to collaborate with other developers and maintain the project over time.
