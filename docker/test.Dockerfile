@@ -1,12 +1,14 @@
 FROM python:3.13-slim
-
-RUN pip install --upgrade pip
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 
 WORKDIR /app
 
-COPY . /app
+COPY pyproject.toml uv.lock ./
+RUN uv sync
 
-COPY ./tests /app/tests
+COPY app/ ./app/
+COPY tests/ ./tests/
+COPY main.py ./
 
-RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install --no-cache-dir pytest pytest-mock pytest-cov
+ENV PATH="/app/.venv/bin:$PATH"
+CMD ["pytest", "-q"]

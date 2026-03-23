@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-.PHONY: install install-dev test run docker-build docker-test
+.PHONY: install install-dev test run format docker-build docker-test
 
 install:
 	./scripts/ubuntu/install.sh
@@ -13,6 +13,9 @@ test:
 
 run:
 	./scripts/ubuntu/run.sh
+
+format:
+	bash ./scripts/ubuntu/format.sh
 
 docker-build:
 	docker build -f docker/build.Dockerfile -t python-template-build .

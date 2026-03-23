@@ -1,15 +1,13 @@
 FROM python:3.13-slim
-
-RUN apt-get update && apt-get install -y \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN pip install --upgrade pip
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 
 WORKDIR /app
 
-COPY . /app
+COPY pyproject.toml uv.lock ./
+RUN uv sync --no-dev
 
-RUN pip install --no-cache-dir -r requirements.txt
+COPY app/ ./app/
+COPY main.py ./
 
+ENV PATH="/app/.venv/bin:$PATH"
 CMD ["python", "./main.py"]
