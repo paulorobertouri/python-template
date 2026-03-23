@@ -27,7 +27,7 @@ def test_get_current_version():
         assert version is not None
         assert str(version) == "1.0.0"
 
-        # Assert that pkg_resources.get_distribution was called with the correct argument
+        # Assert called with correct argument
         mock_version.assert_called_once_with(
             "package-name",
         )
@@ -38,7 +38,7 @@ def test_get_current_version_module_not_found():
     with mock.patch(
         f"{__MODULE__}.version",
     ) as mock_version:
-        # Set the side effect of the mocked function to raise a PackageNotFoundError exception
+        # Set the mocked function to raise PackageNotFoundError
         mock_version.side_effect = PackageNotFoundError(
             "package-name",
         )
@@ -51,7 +51,7 @@ def test_get_current_version_module_not_found():
         # Assert the expected result
         assert version is None
 
-        # Assert that pkg_resources.get_distribution was called with the correct argument
+        # Assert called with correct argument
         mock_version.assert_called_once_with(
             "package-name",
         )
@@ -73,7 +73,7 @@ def test_get_current_version_none():
         # Assert the expected result
         assert version is None
 
-        # Assert that pkg_resources.get_distribution was called with the correct argument
+        # Assert called with correct argument
         mock_version.assert_called_once_with(
             "package-name",
         )
