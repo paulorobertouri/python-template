@@ -1,5 +1,5 @@
 import re
-from typing import Any, Optional
+from typing import Any
 
 from app.str_helper import set_none_if_empty_or_whitespace as coalesce
 
@@ -8,14 +8,14 @@ class VersionData:
     major: int
     minor: int
     patch: int
-    suffix: Optional[str]
+    suffix: str | None
 
     def __init__(
         self,
         major: int,
         minor: int,
         patch: int,
-        suffix: Optional[str] = None,
+        suffix: str | None = None,
     ):
         self.major = major
         self.minor = minor
@@ -76,7 +76,7 @@ class VersionData:
         return self.suffix is not None
 
     @staticmethod
-    def from_string(version: Optional[str]):
+    def from_string(version: str | None):
         if version is None:
             return None
 

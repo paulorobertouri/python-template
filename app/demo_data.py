@@ -1,5 +1,4 @@
 from datetime import date
-from typing import Optional
 
 from pydantic import BaseModel
 
@@ -7,7 +6,7 @@ from pydantic import BaseModel
 class DemoData(BaseModel):
     id: int
     name: str
-    birth_date: Optional[date] = None
+    birth_date: date | None = None
 
     def is_birth_date_today(self):
         if self.birth_date is None:

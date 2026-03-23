@@ -1,8 +1,5 @@
-from typing import Optional
-
-
 def set_none_if_empty_or_whitespace(
-    value: Optional[str],
+    value: str | None,
 ):
     if value is None:
         return None
@@ -12,6 +9,6 @@ def set_none_if_empty_or_whitespace(
 
 
 def is_empty_or_whitespace(
-    value: Optional[str],
+    value: str | None,
 ):
     return set_none_if_empty_or_whitespace(value) is None

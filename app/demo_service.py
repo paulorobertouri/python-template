@@ -1,5 +1,3 @@
-from typing import Optional
-
 from app.demo_data import DemoData
 
 
@@ -10,7 +8,7 @@ class DemoService:
     def add_data(self, data: DemoData) -> None:
         self.repository.append(data)
 
-    def get_data(self, id: int) -> Optional[DemoData]:
+    def get_data(self, id: int) -> DemoData | None:
         for data in self.repository:
             if data.id == id:
                 return data
