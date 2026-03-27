@@ -1,6 +1,10 @@
+build:
+	bash ./scripts/ubuntu/build.sh
 SHELL := /bin/bash
 
-.PHONY: install install-dev test run format docker-build docker-test
+.PHONY: install install-dev test run format lint docker-build docker-test
+lint:
+	bash ./scripts/ubuntu/lint.sh
 
 install:
 	./scripts/ubuntu/install.sh
