@@ -1,6 +1,6 @@
 # python-template
 
-Pure Python template for building well-tested, layered applications.
+Production-ready Python template for building well-tested, layered applications.
 
 ## Stack
 
